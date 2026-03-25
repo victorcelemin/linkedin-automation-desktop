@@ -23,7 +23,7 @@ except ImportError:
 class LinkedInAutomation:
     """LinkedIn automation with human-like behavior"""
     
-    def __init__(self, email, password):
+    def __init__(self, email=None, password=None):
         self.email = email
         self.password = password
         self.driver = None
@@ -61,8 +61,18 @@ class LinkedInAutomation:
         
         return True
     
-    def login(self):
+    def login(self, email=None, password=None):
         """Login to LinkedIn"""
+        # Update credentials if provided
+        if email:
+            self.email = email
+        if password:
+            self.password = password
+            
+        # Validate credentials
+        if not self.email or not self.password:
+            raise ValueError("Email and password are required for login")
+        
         try:
             if not self.driver:
                 self.open_browser()
