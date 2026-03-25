@@ -5,6 +5,7 @@ Image Handler Module - Image search and management
 import random
 import requests
 import os
+from datetime import datetime
 
 
 class ImageHandler:
